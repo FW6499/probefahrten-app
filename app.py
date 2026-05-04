@@ -108,7 +108,7 @@ if st.button("🚀 Generieren"):
             with open(template_path, "wb") as f:
                 f.write(template.getbuffer())
 
-            docx_path = run(
+            docx_bytes = run(
                 excel_path,
                 template_path,
                 year,
@@ -121,10 +121,6 @@ if st.button("🚀 Generieren"):
                     "gross_persons": gross_persons
                 }
             )
-
-            # 👉 DATEI DIREKT EINLESEN (WICHTIG!)
-            with open(docx_path, "rb") as f:
-                docx_bytes = f.read()
 
         # 👉 NACH TEMP-ORDNER
         st.download_button(

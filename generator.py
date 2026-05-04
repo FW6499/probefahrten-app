@@ -1392,4 +1392,7 @@ def run(file, template, year, disabled, pose_cfg):
     if os.path.exists(out_docx):
         os.remove(out_docx)
 
-    return out_docx
+    with open(out_docx, "rb") as f:
+        data = f.read()
+
+    return data
