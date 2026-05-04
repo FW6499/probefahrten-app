@@ -24,6 +24,7 @@ from collections import defaultdict
 from docx.shared import Pt, Cm, RGBColor
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+from docx import Document
 
 MONTHS = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"]
 DARKBLUE = RGBColor(0, 51, 102)
