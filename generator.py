@@ -488,8 +488,6 @@ def write(cell, entries, bold_counter):
 # ============================================================
 
 def gen_doc(template, out, plan, stats, year):
-    if not os.path.exists(out_docx):
-    raise Exception(f"DOCX wurde nicht erstellt: {out_docx}")
 
     doc = Document(template)
     replace_year(doc, year)
