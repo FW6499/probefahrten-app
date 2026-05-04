@@ -1336,12 +1336,7 @@ def run(file, template, year, disabled, pose_cfg):
     # ❗ Spezialpersonen die bereits eingesetzt wurden global merken
     used_special_ids = set()
 
-    folder = os.path.dirname(file)
-
-    out_docx = os.path.join(
-        folder,
-        f"Probefahrten_{year}.docx"
-    )
+    out_docx = f"/tmp/Probefahrten_{year}.docx"
 
     out_pdf = os.path.join(
         folder,
@@ -1387,10 +1382,8 @@ def run(file, template, year, disabled, pose_cfg):
 
     # danach exportieren
     gen_doc(template, out_docx, plan, stats, year)
-
-    # 🔥 DOCX löschen
-    if os.path.exists(out_docx):
-        os.remove(out_docx)
+    if not os.path.exists(out_docx):
+        raise Exception(f"DOCX wurde nicht erstellt: {out_docx}")
 
     with open(out_docx, "rb") as f:
         data = f.read()
