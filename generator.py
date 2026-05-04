@@ -1338,11 +1338,6 @@ def run(file, template, year, disabled, pose_cfg):
 
     out_docx = f"/tmp/Probefahrten_{year}.docx"
 
-    out_pdf = os.path.join(
-        folder,
-        f"Probefahrten_{year}.pdf"
-    )
-
     MAX_TRIES = 20
 
     for attempt in range(MAX_TRIES):
@@ -1381,11 +1376,16 @@ def run(file, template, year, disabled, pose_cfg):
         print(f"🔁 Retry {attempt+1}")
 
     # danach exportieren
+    out_docx = f"/tmp/Probefahrten_{year}.docx"
+
     gen_doc(template, out_docx, plan, stats, year)
+
+    # Sicherstellen dass Datei existiert
     if not os.path.exists(out_docx):
         raise Exception(f"DOCX wurde nicht erstellt: {out_docx}")
 
+    # Datei als Bytes zurückgeben (Streamlit-safe)
     with open(out_docx, "rb") as f:
-        data = f.read()
+        return f.read()
 
     return data
