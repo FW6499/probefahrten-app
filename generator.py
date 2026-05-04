@@ -16,7 +16,6 @@
 # ============================================================
 
 import pandas as pd
-from docx2pdf import convert
 import os
 import glob
 import random
