@@ -4,7 +4,7 @@ import tempfile
 import os
 
 # 👉 IMPORT DEINE LOGIK
-from probefahrtsliste_generator_python_gui_app import run
+from generator import run
 
 st.set_page_config(page_title="Probefahrten FW Lauerz", layout="wide")
 
